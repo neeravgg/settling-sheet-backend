@@ -1,6 +1,5 @@
 // import environmental variables from our variables.env file
 require('dotenv').config();
-require('express-async-errors');
 
 const mongoose = require('mongoose');
 const path = require('path');
