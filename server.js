@@ -1,24 +1,21 @@
 // import environmental variables from our variables.env file
-require("dotenv").config();
-require("express-async-errors");
+require('dotenv').config();
+require('express-async-errors');
 
 const mongoose = require('mongoose');
 const path = require('path');
-const morgan = require("morgan");
-const cookieParser = require("cookie-parser");
-const fileUpload = require("express-fileupload");
-const rateLimiter = require("express-rate-limit");
-const helmet = require("helmet");
-const xss = require("xss-clean");
-const cors = require("cors");
-const mongoSanitize = require("express-mongo-sanitize");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
+const rateLimiter = require('express-rate-limit');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const cors = require('cors');
+const mongoSanitize = require('express-mongo-sanitize');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = require('./app');
-const cronTask = require("./utils/cron");
-const connectDB = require("./db/connect");
-
-
+const cronTask = require('./utils/cron');
+const connectDB = require('./db/connect');
 
 // // Make sure we are running node 7.6+
 // const [major, minor] = process.versions.node.split('.').map(parseFloat);
@@ -26,12 +23,12 @@ const connectDB = require("./db/connect");
 //   console.log('Please upgrade your node.js version at least 16.20.2 or greater. 👌\n ');
 //   process.exit();
 // }
-app.set("trust proxy", 1);
-app.use(morgan("dev"));
+app.set('trust proxy', 1);
+app.use(morgan('dev'));
 
 app.use(
   cors({
-    origin: "*",
+    origin: '*',
   })
 );
 app.use(xss());
@@ -40,14 +37,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.json());
-app.use(express.static("./public"));
-
-
-
-
+app.use(express.static('./public'));
 
 // const glob = require('glob');
-
 
 // const modelsPath = path.join(__dirname, 'models');
 // glob.sync(`${modelsPath}/*.js`).forEach(function (file) {
